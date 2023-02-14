@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     const username = document.querySelector("#username").value;
 
     const password = document.querySelector("#password").value;
-
+      //
       const rawResponse = await fetch("http://localhost:5678/api/users/login", {
         method: "POST",
 
