@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     const username = document.querySelector("#username").value;
 
     const password = document.querySelector("#password").value;
-    // https://stackoverflow.com/questions/29775797/fetch-post-json-data
 
       const rawResponse = await fetch("http://localhost:5678/api/users/login", {
         method: "POST",
