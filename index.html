@@ -12,7 +12,7 @@
     />
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
-    <script src="script.js"></script>
+    <script defer src="script.js"></script>
   </head>
 
   <body>
@@ -54,14 +54,12 @@
         </article>
       </section>
       <section id="portfolio">
-        <h2>Mes Projets</h2>
-
-        <button data-category-id="0" class="btn-style active">Tous</button>
-        <button data-category-id="1" class="btn-style">Objets</button>
-        <button data-category-id="2" class="btn-style">Appartements</button>
-        <button data-category-id="3" class="btn-style">
-          Hôtels & Restaurants
-        </button>
+        <div class="modifierprojets">
+          <h2>Mes Projets</h2>
+        </div>
+        <div class="btn-parrent">
+          <button data-category-id="0" class="btn-style active">Tous</button>
+        </div>
         <div id="gallery"></div>
       </section>
       <section id="contact">
