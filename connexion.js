@@ -1,4 +1,3 @@
-// connection
 document.addEventListener("DOMContentLoaded", function (event) {
   const CreateP = document.createElement("p");
   CreateP.className = "MyErrorMessage";
