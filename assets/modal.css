@@ -1,0 +1,334 @@
+/* Modale cachée par défaut */
+body {
+  background: rgb(136, 202, 177);
+  font-family: "Work Sans";
+}
+
+.modal {
+  /* display: none; */
+  position: fixed;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  /* fond sombre semi-transparent */
+}
+
+/* Contenu de la modale */
+.modal-content {
+  background-color: #ffffff;
+
+  padding: 20px 20px 55px 20px;
+  border: 1px solid #888;
+
+  width: 630px;
+
+  border-radius: 10px;
+}
+
+.modalheader {
+  position: relative;
+
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalheader button#closeBtn {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  height: 12px;
+  width: 12px;
+  border: none;
+  background: none;
+  font-weight: bold;
+  font-size: 12px;
+  max-width: 100%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #fff url(./icons/close-icon.svg) no-repeat center/100%;
+}
+
+.modalheader button#prevBtn {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  height: 14px;
+  width: 21px;
+  border: none;
+  background: none;
+  font-weight: bold;
+  font-size: 12px;
+  max-width: 100%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #fff url(./icons/prev-icon.svg) no-repeat center/100%;
+}
+
+/* Bouton Fermer */
+
+h2 {
+  font-family: "Work Sans";
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 30px;
+}
+
+.monh2 {
+  display: flex;
+  justify-content: space-around;
+}
+
+#closeBtn {
+  font-weight: bold;
+  font-size: 12px;
+  max-width: 100%;
+}
+
+#closeBtn:hover,
+#closeBtn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.asidemodal.gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 424px;
+  margin: auto;
+
+  grid-column-gap: 6px;
+  grid-row-gap: 0px;
+}
+.asidemodal.image-upload {
+  /*display: grid;*/
+  grid-template-columns: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: 424px;
+  margin: auto;
+  display: none;
+}
+.asidemodal.image-upload .zone-upload {
+  background: #e8f1f6;
+  border-radius: 3px;
+  padding: 30px 0px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+.asidemodal.image-upload .zone-upload.loaded {
+  padding: 0;
+}
+.asidemodal.image-upload .zone-upload img {
+  height: 46px;
+  width: 58px;
+  margin-bottom: 13px;
+}
+.asidemodal.image-upload .zone-upload img.loaded {
+  max-width: 100%;
+  width: initial;
+  max-height: 169px;
+  height: initial;
+  margin-bottom: initial;
+}
+.asidemodal.image-upload .zone-upload p {
+  margin: 0;
+}
+.asidemodal.image-upload #file {
+  display: none;
+}
+.asidemodal.image-upload .zone-upload span {
+  border-radius: 50px;
+  font-size: 14px;
+  border: 0;
+  font-weight: bold;
+  color: #306685;
+  padding: 10px 33px;
+  background: #cbd6dc;
+  cursor: pointer;
+}
+
+.asidemodal.image-upload .zone-title {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.asidemodal.image-upload .zone-title span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.asidemodal.image-upload .zone-title input {
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  border: 0;
+  height: 51px;
+  padding: 0px 10px;
+}
+
+.asidemodal.image-upload .zone-categorie {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.asidemodal.image-upload .zone-categorie span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.asidemodal.image-upload .zone-categorie .select-with-custom-arrow {
+  position: relative;
+}
+.asidemodal.image-upload .zone-categorie .select-with-custom-arrow:before {
+  content: "";
+  position: absolute;
+  right: 30px;
+  width: 11px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background: url(./icons/chevron-icone.svg) no-repeat center/100%;
+}
+.asidemodal.image-upload .zone-categorie .select-with-custom-arrow select {
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  border: 0;
+  height: 51px;
+  padding: 0px 10px;
+  appearance: none;
+  width: 100%;
+}
+
+.asidemodal:after {
+  content: "";
+  height: 1px;
+  width: 100%;
+  background: #b3b3b3;
+  margin: 47px 0px 32px;
+}
+.asidemodal.image-upload:after {
+  grid-column: span 1;
+}
+.asidemodal.gallery:after {
+  grid-column: span 5;
+}
+
+.asidemodal img {
+  height: 104px;
+  width: 100%;
+}
+
+.asidemodal a,
+.asidemodal span {
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.fotos {
+  width: 80px;
+  height: 142px;
+}
+
+.fotos .image-zone {
+  display: flex;
+  position: relative;
+}
+
+.fotos .image-zone .trash {
+  display: flex;
+  height: 17px;
+  width: 17px;
+  position: absolute;
+
+  background: #000 url(./icons/trash-icon.svg) no-repeat center/75%;
+
+  border-radius: 2px;
+
+  top: 6px;
+  right: 6px;
+}
+
+.fotos .image-zone .move {
+  display: flex;
+  position: absolute;
+
+  background: #000 url(./icons/move-icon.svg) no-repeat center/75%;
+  height: 17px;
+  width: 17px;
+
+  top: 6px;
+  right: 26px;
+
+  border-radius: 2px;
+}
+
+.modalfooter {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.modalfooter .remove-gallery {
+  margin-bottom: 0;
+}
+
+.modalfooter button {
+  width: 237px;
+  height: 36px;
+  border-radius: 66px;
+  background: #1d6154;
+  color: white;
+
+  border: 0;
+  font-family: "syne";
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.modalfooter button:disabled {
+  background-color: #a7a7a7;
+  cursor: not-allowed;
+}
+
+.modalfooter p {
+  color: red;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "syne";
+  margin-top: 23px;
+  cursor: pointer;
+}
