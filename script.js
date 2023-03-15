@@ -1,33 +1,30 @@
 function CreateGallery(work, sectionGallery, categoryIdNeeded) {
-  // Vérifie si l'ID de la catégorie est nécessaire ou si elle est égale à zéro, pour afficher tous les éléments
   if (categoryIdNeeded == 0 || work.categoryId == categoryIdNeeded) {
-    // Crée un élément HTML de type "figure" pour chaque élément de travail
-    const CreateFigure = document.createElement("figure");
-    // Crée un élément HTML de type "img" pour l'image de l'élément de travail
-    let CreateImageInFigure = document.createElement("img");
-    // Définit la source de l'image en utilisant l'URL stockée dans l'objet "work"
-    CreateImageInFigure.src = work.imageUrl;
-    // Définit le texte alternatif de l'image en utilisant le titre stocké dans l'objet "work"
-    CreateImageInFigure.alt = work.title;
-    // Crée un élément HTML de type "figcaption" pour le titre de l'élément de travail
-    let CreateFigcaptionInFigure = document.createElement("figcaption");
-    // Ajoute le titre de l'élément de travail à l'élément "figcaption"
-    CreateFigcaptionInFigure.innerText = work.title;
-    // Ajoute l'élément "img" dans l'élément "figure"
-    CreateFigure.appendChild(CreateImageInFigure);
-    // Ajoute l'élément "figcaption" dans l'élément "figure"
-    CreateFigure.appendChild(CreateFigcaptionInFigure);
-    // Ajoute l'élément "figure" créé pour l'élément de travail dans la section de galerie spécifiée
-    sectionGallery.appendChild(CreateFigure);
+    // Vérifie si l'ID de la catégorie est nécessaire ou si elle est égale à zéro, pour afficher tous les éléments
+
+    const CreateFigure = document.createElement("figure"); // Crée un élément HTML de type "figure" pour chaque élément de travail
+
+    let CreateImageInFigure = document.createElement("img"); // Crée un élément HTML de type "img" pour l'image de l'élément de travail
+    CreateImageInFigure.src = work.imageUrl; // Définit la source de l'image en utilisant l'URL stockée dans l'objet "work"
+    CreateImageInFigure.alt = work.title; // Définit le texte alternatif de l'image en utilisant le titre stocké dans l'objet "work"
+
+    let CreateFigcaptionInFigure = document.createElement("figcaption"); // Crée un élément HTML de type "figcaption" pour le titre de l'élément de travail
+    CreateFigcaptionInFigure.innerText = work.title; // Ajoute le titre de l'élément de travail à l'élément "figcaption"
+    CreateFigure.appendChild(CreateImageInFigure); // Ajoute l'élément "img" dans l'élément "figure"
+    CreateFigure.appendChild(CreateFigcaptionInFigure); // Ajoute l'élément "figcaption" dans l'élément "figure"
+
+    sectionGallery.appendChild(CreateFigure); // Ajoute l'élément "figure" créé pour l'élément de travail dans la section de galerie spécifiée
   }
 }
-// La fonction renvoie une promesse avec deux fonctions de rappel en argument, resolve et reject.
+
 function getCategories() {
+  // La fonction renvoie une promesse avec deux fonctions de rappel en argument, resolve et reject.
   return new Promise((resolve, reject) => {
     fetch("http://localhost:5678/api/categories") // ici l'url de la liste des categorie
       .then((reponse) => reponse.json()) // La méthode then est utilisée pour extraire les données de réponse et les formater en JSON.
       .then((category_infos) => {
         // La méthode then est utilisée pour extraire les données JSON et les passer à une fonction de rappel.
+
         const parentDiv = document.querySelector(".btn-parrent"); // La constante parentDiv est utilisée pour stocker l'élément parent qui contiendra les boutons de catégorie.
         parentDiv.innerHTML = ""; // L'attribut innerHTML de parentDiv est effacé pour supprimer tout contenu existant.
 
@@ -36,25 +33,14 @@ function getCategories() {
         buttonAll.setAttribute("class", "btn-style active"); // L'attribut "class" du bouton est défini sur "btn-style active", avec les styles CSS correspondants.
         buttonAll.textContent = "Tous"; // Le texte affiché sur le bouton est défini sur "Tous".
 
-        // Ajouter l'élément de bouton au document HTML
-        parentDiv.appendChild(buttonAll);
+        parentDiv.appendChild(buttonAll); // Ajouter l'élément de bouton au document HTML
 
         for (let category_info of category_infos) {
-          // Création de l'élément de bouton en JavaScript
-
-          const filterBtn = document.createElement("button");
-
-          // Ajout de la classe CSS au bouton
-          filterBtn.classList.add("btn-style");
-
-          // Ajout de l'attribut de données au bouton
-          filterBtn.setAttribute("data-category-id", category_info.id);
-
-          // Ajout du texte au bouton
-          filterBtn.innerText = category_info.name;
-
-          // Ajout du bouton à la div parent
-          parentDiv.appendChild(filterBtn);
+          const filterBtn = document.createElement("button"); // Création de l'élément de bouton en JavaScript
+          filterBtn.classList.add("btn-style"); // Ajout de la classe CSS au bouton
+          filterBtn.setAttribute("data-category-id", category_info.id); // Ajout de l'attribut de données au bouton
+          filterBtn.innerText = category_info.name; // Ajout du texte au bouton
+          parentDiv.appendChild(filterBtn); // Ajout du bouton à la div parent
         }
         //résout la promesse avec les données de catégorie récupérées
         resolve(category_infos); // getCategories() est appelée, Les données peuvent ensuite être utilisées par la fonction getCategories() pour afficher les boutons de catégorie
@@ -88,12 +74,11 @@ function bandeauModifier() {
   let link_login_page = document.querySelector("#login_page");
   link_login_page.innerText = "logout";
   link_login_page.addEventListener("click", function (event) {
-    // on vide le local storage donc on se deconnecte
-    localStorage.clear();
-    // On redirige
-    window.location.href = "index.html";
-    // On prevent
-    event.preventDefault(); //Stop la propagation
+    localStorage.clear(); // on vide le local storage donc on se deconnecte
+
+    window.location.href = "index.html"; // On redirige
+
+    event.preventDefault(); //Stop la propagation,On prevent
   });
 
   // on crée le code pour afficher le bandeaux
@@ -161,11 +146,11 @@ function updateGalleryModal() {
   //fonction mettra à jour la galerie d'images dans une page web
   // On récupère les projets
   getWorks().then((data) => {
-    // On vide la galerie
-    cnt_gallery.innerHTML = "";
+    cnt_gallery.innerHTML = ""; // On vide la galerie
     let cnt = 0;
     for (let work of data) {
       //parcours data
+
       const myDiv = document.createElement("div"); //creation
       myDiv.classList.add("fotos"); //ajout de fotos
 
