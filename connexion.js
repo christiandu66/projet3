@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function (event) {
-  const CreateP = document.createElement("p");
+  const CreateP = document.createElement("p"); //creation p
   CreateP.className = "MyErrorMessage";
   document.forms[0].appendChild(CreateP);
 
