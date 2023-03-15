@@ -281,7 +281,7 @@ function callModal() {
   // Par défaut on est sur la galerie
 
   // Effectuer une action au clic sur le bouton précédent qui nous ramène à la galerie
-  document.addEventListener("click", function (e) {
+  document.querySelector(".modal").addEventListener("click", function (e) {
     //console.log("click " + e.target);
 
     // Si la cible du clic est le bouton précédent et que la position de la modal est à 1
