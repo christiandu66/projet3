@@ -158,6 +158,7 @@ let select_modal_category = document.querySelector(
 
 //Defini function pour modal //
 function updateGalleryModal() {
+  //fonction mettra à jour la galerie d'images dans une page web
   // On récupère les projets
   getWorks().then((data) => {
     // On vide la galerie
@@ -202,8 +203,7 @@ function updateGalleryModal() {
     const my_option = document.createElement("option"); // On crée une option vide
     my_option.innerText = "";
     // On ajoute l'option à la liste
-    //const select_modal_category = document.querySelector(".modal .asidemodal.image-upload select"); //select
-    //select_modal_category.appendChild(my_option); //ajout
+
     document
       .querySelector(".modal .asidemodal.image-upload select")
       .appendChild(my_option);
@@ -282,6 +282,8 @@ function callModal() {
 
   // Effectuer une action au clic sur le bouton précédent qui nous ramène à la galerie
   document.addEventListener("click", function (e) {
+    //console.log("click " + e.target);
+
     // Si la cible du clic est le bouton précédent et que la position de la modal est à 1
     if (e.target.matches(".modalheader button#prevBtn") && position_modal) {
       // On change le titre de la modal
@@ -313,8 +315,9 @@ function callModal() {
           resetZoneUpload();
         })
         .catch((error) => {
-          //reponse pas ok
+          alert("Une erreur s'est produite : " + error.message); //reponse pas ok
           // Gérer les erreurs de la requête
+
           resetModal();
           // On remet la zone d'upload à zéro
           resetZoneUpload();
@@ -381,6 +384,7 @@ function callModal() {
           })
           .catch((error) => {
             // Gérer les erreurs de la requête
+            alert("Une erreur s'est produite : " + error.message);
             resetModal();
           });
       }
