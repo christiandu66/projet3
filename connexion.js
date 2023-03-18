@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   document.forms[0].appendChild(CreateP);
 
   document.forms[0].addEventListener("submit", function (evt) {
+    //document.forms[0] identifie le premier formulaire de la page
     const username = document.querySelector("#username").value;
 
     const password = document.querySelector("#password").value;

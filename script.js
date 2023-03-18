@@ -57,7 +57,7 @@ function getWorks() {
         sectionGallery.innerHTML = ""; // L'attribut innerHTML de parentDiv est effacé pour supprimer tout contenu existant.
 
         for (let work of works) {
-          // parcour "works"et créer une galerie d'images correspondante
+          // parcour "works"et créer une galerie d'images correspondante index 0
 
           CreateGallery(work, sectionGallery, 0);
         }
@@ -71,7 +71,7 @@ function bandeauModifier() {
   // Ajout une classe prévu pour baissé le body car la barre noir que l'on vas ajotuer sera en position fixed
   document.querySelector("body").classList.add("connected");
 
-  let link_login_page = document.querySelector("#login_page");
+  let link_login_page = document.querySelector("#login_page"); //change login par logout si connect
   link_login_page.innerText = "logout";
   link_login_page.addEventListener("click", function (event) {
     localStorage.clear(); // on vide le local storage donc on se deconnecte
@@ -105,7 +105,7 @@ function bandeauModifier() {
   introduction_figure_button.innerText = "modifier"; // ajout text
   // AJouter un evenement on clock pour ourir la modal
   introduction_figure_button.addEventListener("click", function (event) {
-    modal.style.display = "flex"; // de display en flex
+    modal.style.display = "flex"; // de display en flex rend visible la modal
   });
 
   introduction_figure.appendChild(introduction_figure_button); // ajout introduction_figure_button à introduction_figure
@@ -118,7 +118,7 @@ function bandeauModifier() {
   const buttondivModifierH2 = document.createElement("button");
   buttondivModifierH2.innerText = "Modifier";
   buttondivModifierH2.addEventListener("click", function (event) {
-    modal.style.display = "flex"; // de display en flex
+    modal.style.display = "flex"; // de display en flex rend visible la modal
   });
 
   // Ajouter l'élément button à l'élément div
@@ -128,9 +128,9 @@ function bandeauModifier() {
 }
 
 // Global variable pour modal //
-let modal = document.querySelector(".modal"); //select .modal
+let modal = document.querySelector(".modal"); //select css .modal
 
-let position_modal = 0; //position de départ
+let position_modal = 0; //position de départ  Ceci initialise la variable position_modal à 0. Cette variable peut être utilisée pour stocker la position actuelle de l'élément modal.
 
 let cnt_gallery = document.querySelector(".modal .asidemodal.gallery"); //select
 let cnt_image_upload = document.querySelector(
@@ -209,21 +209,21 @@ function resetModal() {
   const mybutton_prev = document.querySelector(".modalheader button#prevBtn"); //select
   if (mybutton_prev) {
     //si c'est == à mybutton_prev ont retire mybutton_prev
-    mybutton_prev.remove();
+    mybutton_prev.remove(); //Si le bouton précédent existe, on le supprime de la fenêtre modale.
   }
   h2_modal.innerText = "Galerie photo"; // change le titre en Galerie photo
   cnt_gallery.style.display = "grid"; // On affiche la galerie et on cache ajout photo
-  cnt_image_upload.style.display = "none";
+  cnt_image_upload.style.display = "none"; //On affiche la galerie d'images et on cache la zone d'ajout d'images.
   // On remet la position de la modal à 0
   position_modal = 0;
 
-  document.querySelector(".modalfooter button").removeAttribute("disabled");
+  document.querySelector(".modalfooter button").removeAttribute("disabled"); // On supprime l'attribut "disabled" du bouton "Ajouter une photo" dans la zone de pied de page de la fenêtre modale.
 
   document.querySelector(".modalfooter button").innerText = "Ajouter une photo"; // select et ajourte text
   document.querySelector(".modalfooter .remove-gallery").style.display =
-    "block"; // select et le met en display block
-  updateGalleryModal(); // met a jour laa gallery modal
-  resetZoneUpload();
+    "block"; // select et le met en display block On affiche le bouton "Supprimer la galerie" dans la zone de pied de page de la fenêtre modale.
+  updateGalleryModal(); // met a jour la gallery modal
+  resetZoneUpload(); // On réinitialise la zone d'ajout d'images.
 }
 
 function resetZoneUpload() {
@@ -293,11 +293,12 @@ function callModal() {
         },
       })
         .then((response) => {
+          //et la
           // reponse ok
           // Gérer la réponse du serveur
-          resetModal();
+          resetModal(); //la fonction resetModal() est appelée pour remettre la zone d'upload à zéro
           // On remet la zone d'upload à zéro
-          resetZoneUpload();
+          resetZoneUpload(); //fonction resetZoneUpload() est également appelée pour remettre la zone d'upload à zéro.
         })
         .catch((error) => {
           alert("Une erreur s'est produite : " + error.message); //reponse pas ok
@@ -320,10 +321,10 @@ function callModal() {
           .setAttribute("disabled", "disabled");
         document.querySelector(".modalfooter .remove-gallery").style.display =
           "none";
-        document.querySelector(".modalfooter button").innerText = "Valider";
+        document.querySelector(".modalfooter button").innerText = "Valider"; //modifie le texte à l'intérieur du bouton sélectionné pour qu'il affiche "Valider".
         // On cache la galerie et on affiche ajout photo
-        cnt_gallery.style.display = "none";
-        cnt_image_upload.style.display = "grid";
+        cnt_gallery.style.display = "none"; //cache l'élément qui a l'ID "cnt_gallery".
+        cnt_image_upload.style.display = "grid"; //affiche l'élément qui a l'ID "cnt_image_upload" en utilisant une disposition de grille.
         // On defini la position de la modal à 1
         position_modal = 1;
         // Changement du titre de la modal
@@ -350,10 +351,14 @@ function callModal() {
         const selectValue = select.options[select.selectedIndex].value;
 
         const file = fileInput.files[0];
-        const formData = new FormData();
-        formData.append("image", file);
-        formData.append("title", ImageTitle);
-        formData.append("category", selectValue);
+        const formData = new FormData(); //Cette ligne de code crée une nouvelle instance de l'objet FormData,
+        //qui est un objet JavaScript intégré qui permet de créer facilement des paires clé/valeur à partir des données de formulaire.
+        formData.append("image", file); // Cette ligne ajoute une paire clé/valeur à l'objet, créé précédemment.
+        //La clé "image" est associée à la variable file, qui contient le fichier sélectionné par l'utilisateur.
+        formData.append("title", ImageTitle); //Cette ligne ajoute une paire clé/valeur supplémentaire à l'objet FormData.
+        // La clé "title" est associée à la variable ImageTitle, qui contient la valeur du champ de saisie de titre.
+        formData.append("category", selectValue); // Cette ligne ajoute une troisième paire clé/valeur à l'objet FormData.
+        //La clé "category" est associée à la variable selectValue, qui contient la valeur sélectionnée dans le champ de sélection.
 
         // Création de la requête d'envoi de l'image
         fetch("http://localhost:5678/api/works", {
